@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Spotify;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Services\SpotifyService;
 use Illuminate\Http\Request;
 
-class SpotifyDropdownController extends Controller
+class SpotifyController extends Controller
 {
     private $spotifyService;
 
@@ -20,6 +20,7 @@ class SpotifyDropdownController extends Controller
         $request->validate([
             'name' => 'required'
         ]);
+
         $result = $this->spotifyService->search([
             'q' => 'artist:' . $request->input('name'),
             'type' => 'artist'

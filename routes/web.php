@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/submit', [App\Http\Controllers\SendSongController::class, 'formSubmit'])->name('form.submit');
+Route::post('/submit', [App\Http\Controllers\SendSongController::class, 'submit'])->name('song.submit');
