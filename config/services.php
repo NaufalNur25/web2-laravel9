@@ -31,4 +31,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'spotify' => [
+        'url' => env('SPOTIFY_URL', 'https://127.0.0.1:8000/api/v1'),
+        'client_id' => env('SPOTIFY_CLIENT_ID'),
+        'client_secret' => env('SPOTIFY_CLIENT_SECRET'),
+    ],
+
+    'ai_emotion' => [
+        'url' => env('AI_EMOTION_URL', 'http://127.0.0.1:8000/predict'),
+    ],
+
 ];
