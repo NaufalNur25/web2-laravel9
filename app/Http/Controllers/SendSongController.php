@@ -19,8 +19,6 @@ class SendSongController extends Controller
             'song' => 'required|string|max:255',
         ]);
 
-        dd($validatedData);
-
         #TODO:Process song
 
         return redirect()->back()->with('success', 'Song sent successfully! 🎵');
