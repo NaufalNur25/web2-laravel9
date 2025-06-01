@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\AI;
+namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use App\Enums\Emotion;

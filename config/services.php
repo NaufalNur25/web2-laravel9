@@ -32,7 +32,8 @@ return [
     ],
 
     'spotify' => [
-        'url' => env('SPOTIFY_URL', 'https://127.0.0.1:8000/api/v1'),
+        'base_url' => env('SPOTIFY_BASE_URL', 'https://127.0.0.1:8000/api/v1'),
+        'access_token_url' => env('SPOTIFY_ACCESS_TOKEN'),
         'client_id' => env('SPOTIFY_CLIENT_ID'),
         'client_secret' => env('SPOTIFY_CLIENT_SECRET'),
     ],
