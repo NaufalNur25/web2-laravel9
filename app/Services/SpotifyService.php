@@ -57,7 +57,7 @@ class SpotifyService
         return $response->json();
     }
 
-    public function getRecommendations(array $seeds, int $limit = 10, int $offset = 1): array
+    public function recommendations(array $seeds, int $limit = 10, int $offset = 1): array
     {
         if (empty($seeds)) {
             return ['error' => 'At least one seed parameter is required'];
