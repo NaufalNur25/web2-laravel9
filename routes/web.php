@@ -27,7 +27,7 @@ Route::post('/music', [Music\PostController::class, 'create'])->middleware('auth
 
 Route::get('/home', function () {
     return view('home');
-})->middleware('auth');
+})->name('home')->middleware('auth');
 Route::get('/create', function () {
     return view('create');
 })->middleware('auth');
