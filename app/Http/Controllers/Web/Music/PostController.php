@@ -21,13 +21,13 @@ class PostController extends Controller
 
     public function create(CreatePostRequest $request)
     {
-        $spotifyService = app(SpotifyService::class);
-        $spotifyData = $spotifyService->detail($request->type, $request->spotify_id);
-        Spotify::create(collect($spotifyData)->only('type', 'uri')->toArray());
+        // $spotifyService = app(SpotifyService::class);
+        // $spotifyData = $spotifyService->detail($request->type, $request->spotify_id);
+        // Spotify::create(collect($spotifyData)->only('type', 'uri')->toArray());
 
         Auth::user()->posts()->create($request->all());
 
-        return redirect()->back()->with('success', 'Song sent successfully! 🎵');
+        return redirect()->route('home')->with('success', 'Song posted! 🎵');
     }
 
     public function getRecomendations(Request $request)

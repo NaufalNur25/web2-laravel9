@@ -29,6 +29,7 @@ class RecomendationsResource extends JsonResource
             'albums' => @$this['album'] ? [
                 'id' => $this['album']['id'],
                 'name' => $this['album']['name'],
+                'image' => $this['album']['images'][0]['url'],
             ] : null,
         ];
     }
