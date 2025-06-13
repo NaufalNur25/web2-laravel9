@@ -21,7 +21,10 @@ Route::get('/login', function () {
 });
 Route::get('/home', function () {
     return view('home');
-});
+})->middleware('auth');
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth');
 
 Route::get('/submit', [App\Http\Controllers\SendSongController::class, 'formSubmit'])->name('form.submit');
 Route::post('/submit', [App\Http\Controllers\SendSongController::class, 'submit'])->name('song.submit');

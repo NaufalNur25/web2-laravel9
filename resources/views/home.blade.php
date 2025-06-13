@@ -11,18 +11,24 @@
 </head>
 <body>
     <nav>
-        <button>
-            <i class="fa-solid fa-house"></i>
-            <p>Home</p>
-        </button>
-        <button>
-            <i class="fa-regular fa-square-plus"></i>
-            <p>Create</p>
-        </button>
-        <button>
-            <i class="fa-regular fa-user"></i>
-            <p>Profile</p>
-        </button>
+        <a href="{{ url('/home') }}">
+            <button>
+                <i class="fa-solid fa-house"></i>
+                <p>Home</p>
+            </button>
+        </a>
+        <a href="{{ url('/create') }}">
+            <button>
+                <i class="fa-regular fa-square-plus"></i>
+                <p>Create</p>
+            </button>
+        </a>
+        <a href="{{ url('/profile') }}">
+            <button>
+                <i class="fa-regular fa-user"></i>
+                <p>Profile</p>
+            </button>
+        </a>
     </nav>
     <main>
         @php
