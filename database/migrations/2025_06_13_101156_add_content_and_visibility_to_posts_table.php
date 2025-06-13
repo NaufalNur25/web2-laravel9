@@ -8,28 +8,30 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->boolean('visibility')->default(false);
-            $table->timestamp('expired_at')->nullable()->change();
+        });
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->timestamp('expired_at')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn(['content', 'visibility']);
-            $table->timestamp('expired_at')->nullable(false)->change();
+        });
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->timestamp('expired_at');
         });
     }
 };
