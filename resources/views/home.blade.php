@@ -7,25 +7,25 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/content-card.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
     <nav>
         <a href="{{ url('/home') }}">
             <button>
-                <i class="fa-solid fa-house"></i>
+                <i class="ri-home-fill"></i>
                 <p>Home</p>
             </button>
         </a>
         <a href="{{ url('/create') }}">
             <button>
-                <i class="fa-regular fa-square-plus"></i>
+                <i class="ri-add-box-line"></i>
                 <p>Create</p>
             </button>
         </a>
         <a href="{{ url('/profile') }}">
             <button>
-                <i class="fa-regular fa-user"></i>
+                <i class="ri-user-line"></i>
                 <p>Profile</p>
             </button>
         </a>
