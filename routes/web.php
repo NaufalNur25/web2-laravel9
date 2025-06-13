@@ -23,5 +23,8 @@ Route::post('/logout', Authentication\LogoutController::class)->middleware('auth
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth');
 
 Route::get('/', fn() => redirect('/login'));
