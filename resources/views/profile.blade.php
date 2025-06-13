@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +20,17 @@
         document.getElementById(id).style.display = 'none';
     }
 
-    document.addEventListener('click', function (e) {
+    function logout() {
+
+    }
+
+    document.addEventListener('click', function(e) {
         if (e.target.classList.contains('modal-overlay')) {
             e.target.style.display = 'none';
         }
     });
 </script>
+
 <body>
     <nav>
         <a href="{{ url('/home') }}">
@@ -48,7 +54,7 @@
     </nav>
     <main>
         <div class="user-profile">
-            <p class="username">{{ "@" . Auth::user()->username }}</p>
+            <p class="username">{{ '@' . Auth::user()->username }}</p>
             <p class="post">1 Post</p>
             <button onclick="openModal('modal-confirm')">
                 <i class="ri-settings-line"></i>
@@ -77,9 +83,13 @@
 
     <x-modal id="modal-confirm" title="Settings">
         <div class="modal-action">
-            <button class="button-modal">Log Out</button>
+            <form id="logout-form" action="/logout" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="button-modal">Log Out</button>
+            </form>
             <button class="button-modal" onclick="closeModal('modal-confirm')">Cancel</button>
         </div>
     </x-modal>
 </body>
+
 </html>
