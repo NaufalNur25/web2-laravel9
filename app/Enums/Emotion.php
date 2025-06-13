@@ -14,12 +14,37 @@ enum Emotion: string
     public function toSpotifyParams(): array
     {
         return match ($this) {
-            self::SENANG => ['valence' => 0.9, 'energy' => 0.8],
-            self::SEDIH => ['valence' => 0.2, 'energy' => 0.3],
-            self::MARAH => ['valence' => 0.3, 'energy' => 0.9],
-            self::TAKUT => ['valence' => 0.2, 'mode' => 0],
-            self::CINTA => ['valence' => 0.8, 'energy' => 0.6],
-            self::JIJIK => ['valence' => 0.1, 'energy' => 0.4],
+            self::SENANG => [
+                'target_valence' => 0.9,
+                'target_energy' => 0.8,
+                'min_danceability' => 0.7,
+                'max_tempo' => 150
+            ],
+            self::SEDIH => [
+                'target_valence' => 0.2,
+                'max_energy' => 0.3,
+                'max_tempo' => 100
+            ],
+            self::MARAH => [
+                'target_valence' => 0.3,
+                'target_energy' => 0.9,
+                'min_tempo' => 120
+            ],
+            self::TAKUT => [
+                'target_valence' => 0.2,
+                'target_mode' => 0,
+                'max_energy' => 0.5
+            ],
+            self::CINTA => [
+                'target_valence' => 0.8,
+                'target_energy' => 0.6,
+                'min_acousticness' => 0.3
+            ],
+            self::JIJIK => [
+                'target_valence' => 0.1,
+                'target_energy' => 0.4,
+                'min_instrumentalness' => 0.2
+            ],
         };
     }
 

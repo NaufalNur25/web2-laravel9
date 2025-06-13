@@ -18,6 +18,19 @@ class EmotionDetectionService
         }
     }
 
+    public function getSpotifySeeds(string $text): array
+    {
+        $response = Http::post($this->baseUrl, [
+            'text' => $text,
+        ]);
+
+        if (!$response->ok() || !isset($response['emotion'])) {
+            return [];
+        }
+
+        return Emotion::fromString($response['emotion'])->toSpotifyParams();
+    }
+
     public function detectEmotion(string $text): ?Emotion
     {
         $response = Http::post($this->baseUrl, [

@@ -38,3 +38,13 @@ Route::prefix('public')->group(function () {
         });
     });
 });
+
+
+Route::prefix('v1')->group(function () {
+    Route::prefix('spotify')->group(function () {
+         Route::post('/recommendations', [
+                App\Http\Controllers\Web\Music\PostController::class,
+                'getRecomendations'
+            ])->name('spotify.recommendations');
+    });
+});
