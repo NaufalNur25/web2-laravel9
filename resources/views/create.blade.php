@@ -9,47 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/create.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        .ri-spin {
-            animation: ri-spin 1s linear infinite;
-        }
-
-        @keyframes ri-spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading {
-            display: none;
-            color: #666;
-            padding: 8px 12px;
-            pointer-events: none;
-        }
-
-        .dropdown-input-wrapper.disabled {
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .track-preview {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .track-preview img {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-    </style>
 </head>
 
 <body>
