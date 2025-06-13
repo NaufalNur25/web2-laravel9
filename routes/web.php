@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Authentication;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [Authentication\LoginController::class, 'view'])->name('login')->middleware('guest');
+Route::post('/login', [Authentication\LoginController::class, 'login']);
+Route::get('/register', [Authentication\RegisterController::class, 'view'])->middleware('guest');
+Route::post('/register', [Authentication\RegisterController::class, 'register']);
+Route::post('/logout', Authentication\LogoutController::class)->middleware('auth');
+
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
@@ -26,5 +27,4 @@ Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth');
 
-Route::get('/submit', [App\Http\Controllers\SendSongController::class, 'formSubmit'])->name('form.submit');
-Route::post('/submit', [App\Http\Controllers\SendSongController::class, 'submit'])->name('song.submit');
+Route::get('/', fn() => redirect('/login'));
