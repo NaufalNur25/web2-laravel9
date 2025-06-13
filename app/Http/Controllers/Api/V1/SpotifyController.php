@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\Spotify\DropdownTrackResource;
+use App\Http\Resources\Api\Spotify\RecomendationsResource;
 use App\Services\SpotifyService;
 use Illuminate\Http\Request;
 
@@ -54,7 +54,7 @@ class SpotifyController extends Controller
             'type' => 'track'
         ], 10);
 
-        return response()->json($result['tracks']['items'] ? DropdownTrackResource::collection($result['tracks']['items']) : []);
+        return response()->json($result['tracks']['items'] ? RecomendationsResource::collection($result['tracks']['items']) : []);
     }
 
     public function dropdownPlaylists(Request $request)
