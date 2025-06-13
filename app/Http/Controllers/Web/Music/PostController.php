@@ -27,7 +27,7 @@ class PostController extends Controller
 
         Auth::user()->posts()->create($request->all());
 
-        return 'success';
+        return response()->json(['success' => true], 201);
     }
 
     public function getRecomendations(Request $request)
