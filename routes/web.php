@@ -21,12 +21,18 @@ Route::post('/login', [Authentication\LoginController::class, 'login']);
 Route::get('/register', [Authentication\RegisterController::class, 'view'])->middleware('guest');
 Route::post('/register', [Authentication\RegisterController::class, 'register']);
 Route::post('/logout', Authentication\LogoutController::class)->middleware('auth');
+Route::get('/profile', [Profile\ProfileController::class, 'view'])->middleware('auth');
+Route::get('/music', [Music\PostController::class, 'view'])->middleware('auth');
+Route::post('/music', [Music\PostController::class, 'create'])->middleware('auth');
 
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
-Route::get('/profile', [Profile\ProfileController::class, 'view'])->middleware('auth');
-Route::get('/music', [Music\PostController::class, 'view'])->middleware('auth');
-Route::post('/music', [Music\PostController::class, 'create'])->middleware('auth');
+Route::get('/create', function () {
+    return view('create');
+})->middleware('auth');
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth');
 
 Route::get('/', fn() => redirect('/login'));
