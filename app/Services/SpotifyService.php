@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class SpotifyService
 {
@@ -60,16 +61,16 @@ class SpotifyService
         return $response->json();
     }
 
-    public function recommendations(array $seeds, int $limit = 10, int $offset = 0): array
+    public function recommendations(string $text, int $limit = 10, int $offset = 0): array
     {
-        if (empty($seeds)) {
-            return ['error' => 'At least one seed parameter is required'];
+        if (Str::length($text) > 250) {
+            return ['error' => 'Spotify text query too long'];
         }
 
-        $query = array_merge($seeds, ['limit' => $limit, 'offset' => $offset]);
+        $query = array_merge(['q' => $text, 'limit' => $limit, 'offset' => $offset, 'type' => 'track']);
 
         $response = Http::withToken($this->token)
-            ->get($this->baseUrl . '/recommendations', $query);
+            ->get($this->baseUrl . '/search', $query);
 
         if (!$response->ok()) {
             return ['error' => 'Spotify recommendations failed', 'details' => $response->json()];

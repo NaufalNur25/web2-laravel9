@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web\Music;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Music\CreatePostRequest;
+use App\Http\Resources\Api\Spotify\RecomendationsResource;
 use App\Models\Post;
 use App\Models\Spotify;
+use App\Services\EmotionDetectionService;
 use App\Services\SpotifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,5 +28,13 @@ class PostController extends Controller
         Auth::user()->posts()->create($request->all());
 
         return redirect()->back()->with('success', 'Song sent successfully! 🎵');
+    }
+
+    public function getRecomendations(Request $request)
+    {
+        $spotifyService = app(SpotifyService::class);
+        $recomendations = $spotifyService->recommendations($request->text);
+
+        return response()->json($recomendations['tracks']['items'] ? RecomendationsResource::collection($recomendations['tracks']['items']) : []);
     }
 }
