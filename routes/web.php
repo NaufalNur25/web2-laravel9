@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Authentication;
+use App\Http\Controllers\Web\Profile;
+use App\Http\Controllers\Web\Music;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +25,8 @@ Route::post('/logout', Authentication\LogoutController::class)->middleware('auth
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware('auth');
+Route::get('/profile', [Profile\ProfileController::class, 'view'])->middleware('auth');
+Route::get('/music', [Music\PostController::class, 'view'])->middleware('auth');
+Route::post('/music', [Music\PostController::class, 'create'])->middleware('auth');
 
 Route::get('/', fn() => redirect('/login'));

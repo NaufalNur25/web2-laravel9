@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers\Web\Music;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Music\CreatePostRequest;
+use App\Models\Post;
+use App\Models\Spotify;
+use App\Services\SpotifyService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class PostController extends Controller
+{
+    public function view()
+    {
+        return view('submit');
+    }
+
+    public function create(CreatePostRequest $request)
+    {
+        $spotifyService = app(SpotifyService::class);
+        $spotifyData = $spotifyService->detail($request->type, $request->spotify_id);
+        Spotify::create(collect($spotifyData)->only('type', 'uri')->toArray());
+
+        Auth::user()->posts()->create($request->all());
+
+        return redirect()->back()->with('success', 'Song sent successfully! 🎵');
+    }
+}
