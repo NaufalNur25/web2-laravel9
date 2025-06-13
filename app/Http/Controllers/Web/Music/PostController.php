@@ -27,7 +27,7 @@ class PostController extends Controller
 
         Auth::user()->posts()->create($request->all());
 
-        return redirect()->route('home')->with('success', 'Song posted! 🎵');
+        return 'success';
     }
 
     public function getRecomendations(Request $request)
