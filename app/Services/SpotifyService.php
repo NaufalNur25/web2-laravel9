@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class SpotifyService
 {
-    const SUPPORT_DETAIL_TYPES = ['artist', 'album', 'track', 'playlist'];
+    const SUPPORT_DETAIL_TYPES = ['artist', 'album', 'tracks', 'playlist'];
 
     private $baseUrl;
     private $accessTokenUrl;
