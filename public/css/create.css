@@ -107,10 +107,9 @@ main form section textarea {
   border: 1px solid black;
   border-radius: 8px;
   width: 620px;
-  max-height: 360px;
-  min-height: 64px;
-  resize: vertical;
+  resize: none;
   height: 128px;
+  padding: 8px;
 }
 
 main form section input[type="text"],
@@ -225,7 +224,7 @@ main form section.dropdown-input-wrapper .dropdown-arrow {
 
 main form section.dropdown-input-wrapper .dropdown-options {
     position: absolute;
-    top: calc(100% + -35px);
+    top: 60px;
     left: 0;
     right: 0;
     z-index: 10;
@@ -262,10 +261,55 @@ main form section.dropdown-input-wrapper p span {
     color: red;
 }
 
+main form section.dropdown-input-wrapper .dropdown-options .loading {
+    color: #888;
+    font-style: italic;
+}
+
 main form button {
   width: 100px;
   height: 32px;
   background-color: #000;
   color: #fff;
   border-radius: 8px;
+}
+
+.ri-spin {
+    animation: ri-spin 1s linear infinite;
+}
+
+@keyframes ri-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    display: none;
+    color: #666;
+    padding: 8px 12px;
+    pointer-events: none;
+}
+
+.dropdown-input-wrapper.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.track-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.track-preview img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
 }
