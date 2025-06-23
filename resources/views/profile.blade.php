@@ -56,17 +56,18 @@
     <main>
         <div class="user-profile">
             <p class="username">{{ '@' . Auth::user()->username }}</p>
-            <p class="post">1 Post</p>
+            <p class="post">{{ $posts->count() }} Post</p>
             <button onclick="openModal('modal-confirm')">
                 <i class="ri-settings-line"></i>
             </button>
         </div>
         <div class="posted">
-            @foreach ($posts as $post)
-                <x-content-card
-                    :username="$post->user->username ?? 'Unknown'"
-                    :uri="$post->spotifyId ?? ''"
-                    :description="$post->content ?? 'No Description'" />
+            @foreach ($posts as $index => $post)
+            <x-content-card
+                :id="'iframe-' . $index"
+                :username="$post->user->username ?? 'Unknown'"
+                :uri="$post->spotify_id ?? ''"
+                :description="$post->content ?? 'No Description'" />
             @endforeach
 
         </div>
