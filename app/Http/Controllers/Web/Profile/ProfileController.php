@@ -8,6 +8,9 @@ class ProfileController extends Controller
 {
     public function view()
     {
-        return view('profile');
+        $user = auth()->user();
+        $posts = $user->posts()->latest()->get();
+
+        return view('profile', compact('posts'));
     }
 }
