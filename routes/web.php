@@ -24,10 +24,8 @@ Route::post('/logout', Authentication\LogoutController::class)->middleware('auth
 Route::get('/profile', [Profile\ProfileController::class, 'view'])->middleware('auth');
 Route::get('/music', [Music\PostController::class, 'view'])->middleware('auth');
 Route::post('/music', [Music\PostController::class, 'create'])->name('music.create')->middleware('auth');
+Route::get('/home', [Music\HomeController::class, 'view'])->middleware('auth');
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware('auth');
 Route::get('/create', function () {
     return view('create');
 })->middleware('auth');
