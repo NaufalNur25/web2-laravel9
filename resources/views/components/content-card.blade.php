@@ -2,7 +2,6 @@
     <p>@ {{ $username }}</p>
     <iframe id="{{ $id }}" class="spotify-embed" data-spotify-id="{{ $uri }}"></iframe>
     <p>{{ $description }}</p>
-
 </div>
 
 

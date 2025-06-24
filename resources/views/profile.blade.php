@@ -67,13 +67,12 @@
                 :id="'iframe-' . $index"
                 :username="$post->user->username ?? 'Unknown'"
                 :uri="$post->spotify_id ?? ''"
-                :description="$post->content ?? 'No Description'" />
+                :description="($post->content ?? 'No Description') . ' -' . ($post->visibility ? 'Public' : 'Private')" />
             @endforeach
-
         </div>
     </main>
 
-    <x-modal id="modal-confirm" title="Settings">
+    <x-modal id=" modal-confirm" title="Settings">
         <div class="modal-action">
             <form id="logout-form" action="/logout" method="POST" class="inline">
                 @csrf
