@@ -30,6 +30,28 @@ class PostController extends Controller
         return response()->json(['success' => true], 201);
     }
 
+    public function destroy(Post $post)
+    {
+        if (auth()->id() !== $post->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $post->delete();
+        return redirect()->back()->with('status', 'Post deleted.');
+    }
+
+    public function publish(Post $post)
+    {
+        if (auth()->id() !== $post->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $post->visibility = !$post->visibility;
+        $post->save();
+
+        return redirect()->back()->with('status', 'Post ' . ($post->visibility ? 'published' : 'unpublished'));
+    }
+
     public function getRecomendations(Request $request)
     {
         $spotifyService = app(SpotifyService::class);

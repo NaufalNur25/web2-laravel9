@@ -26,11 +26,113 @@
 .content-card .spotify {
     border: 1px solid black;
     border-radius: 8px;
-    padding: 16px
+    padding: 16px;
 }
 
-.content-card p {
+.content-card .content-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 12px;
+}
+
+.content-card .content-title .detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-card .content-title .detail h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.content-card .content-title .detail p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #888;
+}
+
+p i.fa-globe {
+  color: #999;
+  margin-right: 1px;
+  font-size: 10px;
+}
+
+.content-card .content-description p {
     color: #555;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.content-card .post-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.content-card .action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.content-card .action-btn:hover {
+  color: #111;
+}
+
+.content-card .action-btn i {
+  font-size: 16px;
+}
+
+.content-card .action-btn.delete {
+  color: #e74c3c;
+}
+
+.content-card .action-btn.delete:hover {
+  color: #c0392b;
+}
+
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.badge.primary {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.badge.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.action-btn.publish {
+  color: #4caf50;
+}
+
+.action-btn.publish:hover {
+  color: #388e3c;
+}
+
+.action-btn.unpublish {
+  color: #f39c12;
+}
+
+.action-btn.unpublish:hover {
+  color: #e67e22;
 }
