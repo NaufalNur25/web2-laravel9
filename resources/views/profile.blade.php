@@ -64,15 +64,15 @@
         </div>
         <div class="posted">
             @foreach ($posts as $post)
-                <x-content-card
-                    :id="$post->id"
-                    :userHavePost="auth()->id() === $post->user_id"
-                    :visibility="$post->visibility ?? false"
-                    :postedAt="$post->created_at->diffForHumans()"
-                    :username="$post->user->username ?? 'Unknown'"
-                    :uri="$post->spotify_id ?? ''"
-                    :description="$post->content ?? 'No Description'"
-                    :onProfilePage="true" />
+            <x-content-card
+                :id="$post->id"
+                :userHavePost="auth()->id() === $post->user_id"
+                :visibility="$post->visibility ?? false"
+                :postedAt="$post->created_at->diffForHumans()"
+                :username="$post->user->username ?? 'Unknown'"
+                :uri="$post->spotify_id ?? ''"
+                :description="$post->content ?? 'No Description'"
+                :useForProfile="true" />
             @endforeach
         </div>
     </main>
