@@ -71,7 +71,8 @@
                     :postedAt="$post->created_at->diffForHumans()"
                     :username="$post->user->username ?? 'Unknown'"
                     :uri="$post->spotify_id ?? ''"
-                    :description="$post->content ?? 'No Description'" />
+                    :description="$post->content ?? 'No Description'"
+                    :onProfilePage="true" />
             @endforeach
         </div>
     </main>
